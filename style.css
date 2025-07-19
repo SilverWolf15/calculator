@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calc-body {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 600px;
+    align-items: center;
+}
+
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 12px;
+    justify-content: center;
+}
+
+.inputs button {
+    width: 120px;
+    height: 80px;
+}
