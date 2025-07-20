@@ -30,8 +30,8 @@ function divide(n1, n2) {
 }
 
 function operate() {
-    n1 = parseInt(num1);
-    n2 = parseInt(num2);
+    n1 = parseFloat(num1);
+    n2 = parseFloat(num2);
     switch(op) {
         case '+' :{
             add(n1, n2);
@@ -51,7 +51,12 @@ function operate() {
         }
     }
     op = "";
-    console.log(num1, num2, op);
+    decimalFlag = false;
+    updateDisplay(num1);
+}
+
+function updateDisplay(num) {
+    display.textContent = num;
 }
 
 function clear() {
@@ -60,39 +65,65 @@ function clear() {
     op = "";
     opFlag = false;
     decimalFlag = false;
+    display.textContent = "0";
 }
 
-inputs = document.querySelectorAll(".inputs button");
-operator = document.querySelectorAll(".operators button");
-ac = document.querySelector(".clear");
-evaluate = document.querySelector(".equal");
+function numberModification(operation) {
+    if(typeof num1 == "string" && opFlag == false) {
+        num1 = (operation === "sign") ? ((num1.at(0) === '-') ? num1.slice(1) : "-" + num1) : num1.concat(".");
+        updateDisplay(num1);
+    } else {
+        num2 = (operation === "sign") ? ((num2.at(0) === '-') ? num2.slice(1) : "-" + num2) : num2.concat(".");
+        updateDisplay(num2);
+    }
+}
+
+let display = document.querySelector(".display");
+let inputs = document.querySelectorAll(".inputs button");
+let operator = document.querySelectorAll(".operators button");
+let decimal = document.querySelector(".decimal");
+let sign = document.querySelector(".sign");
+let ac = document.querySelector(".clear");
+let evaluate = document.querySelector(".equal");
 
 inputs.forEach(element => {
     element.addEventListener('click', () => {
-        if(opFlag === false) {
+        if(opFlag == false) {
             num1 += element.textContent;
+            updateDisplay(num1);
         } else {
             num2 += element.textContent;
+            updateDisplay(num2);
         }
-        console.log(num1, num2, op);
     });
 });
 
 operator.forEach( element => {
     element.addEventListener('click', () => {
+        if(num2 !== "" && op !== "")
+            operate();
         op = element.textContent;
         opFlag = true;
-        if(num2 !== "") {
-            operate();
-            return;
-        }
+        decimalFlag = false;
+        
     })
+});
+
+decimal.addEventListener('click', () => {
+    if(decimalFlag == false) {
+        numberModification("decimal");
+        decimalFlag = true;
+    }
+});
+
+sign.addEventListener('click', () => {
+    numberModification("sign");
 });
 
 ac.addEventListener('click', clear);
 
 evaluate.addEventListener('click', () => {
-    if(num2 !== "") {
+    if(num2 !== "" && op !== "") {
         operate();
     }
 });
