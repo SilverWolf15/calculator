@@ -1,14 +1,15 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 100dvh;
 }
 
 .calc-body {
     display: flex;
     flex-wrap: wrap;
     width: 457px;
-    align-items: center;
     gap: 8px;
     background-color: #314158;
     padding: 16px;

@@ -21,7 +21,7 @@ function multiply(n1, n2) {
 
 function divide(n1, n2) {
     if(n2===0) {
-        updateDisplay("Error");
+        alert("Division by zero is not allowed.");
         clear();
         return;
     }
@@ -65,7 +65,7 @@ function clear() {
     op = "";
     opFlag = false;
     decimalFlag = false;
-    display.textContent = "0";
+    updateDisplay("0");
 }
 
 function numberModification(operation) {
