@@ -6,13 +6,29 @@ body {
 
 .calc-body {
     display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 600px;
+    flex-wrap: wrap;
+    width: 457px;
     align-items: center;
+    gap: 8px;
+    background-color: #314158;
+    padding: 16px;
+    border: 3px solid black;
+    border-radius: 5px;
 }
 
-.inputs {
+.display {
+    padding: 16px;
+    border: 3px solid black;
+    border-radius: 5px;
+    background-color: #d0fae5;
+    flex-grow: 1;
+    display: flex;
+    font-size: 24px;
+    min-height: 28px;
+    justify-content: center;
+}
+
+.calc-buttons {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
@@ -20,7 +36,16 @@ body {
     justify-content: center;
 }
 
-.inputs button {
-    width: 120px;
-    height: 80px;
+.calc-buttons button {
+    width: 105px;
+    height: 90px;
+    font-size: 24px;
+    border: 3px solid black;
+    border-radius: 7px;
+    background-color: #6a7282;
+    color: #f3f4f6;
+}
+
+.clear, .equal {
+    flex-grow: 1;
 }

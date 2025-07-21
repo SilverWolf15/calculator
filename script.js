@@ -21,7 +21,7 @@ function multiply(n1, n2) {
 
 function divide(n1, n2) {
     if(n2===0) {
-        console.log("Error");
+        updateDisplay("Error");
         clear();
         return;
     }
@@ -79,8 +79,8 @@ function numberModification(operation) {
 }
 
 let display = document.querySelector(".display");
-let inputs = document.querySelectorAll(".inputs button");
-let operator = document.querySelectorAll(".operators button");
+let inputs = document.querySelectorAll("button.inputs");
+let operator = document.querySelectorAll("button.operators");
 let decimal = document.querySelector(".decimal");
 let sign = document.querySelector(".sign");
 let ac = document.querySelector(".clear");
